@@ -41,9 +41,9 @@ export const MenuBar = () => {
 				</a>
 			</Link>
 
-			<Link href={'/profile'}>
+			<Link href={'/account'}>
 				<a className='flex flex-col justify-center items-center'>
-					<AiOutlineUser size={'2em'} color={currentRoute === '/profile' ? style.active : style.notActive} />
+					<AiOutlineUser size={'2em'} color={currentRoute === '/account' ? style.active : style.notActive} />
 					<span className='mt-3'>Perfil</span>
 				</a>
 			</Link>

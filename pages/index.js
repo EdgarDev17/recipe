@@ -1,14 +1,11 @@
 import CardList from '../components/CardList'
 import { CategoriesList } from '../components/CategoriesList'
-import { MenuBar } from '../components/MenuBar'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
 
-	const [recipesList, setRecipesList] = useState([])
-
-
-
+	const [recipesList, setRecipesList] = useState([{}])
+	const [category, setCategory] = useState('main course')
 
 	useEffect(()=>{
 		fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.NEXT_PUBLIC_API_KEY}&number=10`)
@@ -16,7 +13,11 @@ export default function Home() {
 		.then(data =>{
 			setRecipesList(data.recipes)
 		})
-	}, [])
+	},[] )
+
+	function getCategory (categoryParam){
+		setCategory(categoryParam)
+	}
 
 	return (
 		<div>
@@ -27,12 +28,10 @@ export default function Home() {
 					</h1>
 				</div>
 
-				<CategoriesList />
-				<CardList products={recipesList} />
+				<CategoriesList getCategory = {getCategory}/>
 
-				<div className='fixed bottom-0 left-0 right-0'>
-					<MenuBar  />
-				</div>
+				<CardList products={recipesList}/>
+
 			</div>
 		</div>
 	)
