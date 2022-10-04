@@ -19,6 +19,9 @@
 .DS_Store
 *.pem
 
+#testing files
+/testing
+/public/test
 # debug
 npm-debug.log*
 yarn-debug.log*
