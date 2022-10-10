@@ -2,13 +2,15 @@ import CardList from '../components/CardList'
 import { CategoriesList } from '../components/CategoriesList'
 import { useEffect, useState } from 'react'
 import Searchbar from '../components/inputBar'
-
+import AuthCard from './../components/authenticationCard'
+import { useSession } from 'next-auth/react'
 
 export default function Home() {
 	const [recipesList, setRecipesList] = useState([{}])
 	const [searchedList, setSearchedList] = useState()
 	const [category, setCategory] = useState('main course')
 	const [query, setQuery] = useState('')
+	const { data: session } = useSession()
 
 	useEffect(() => {
 		fetch(
@@ -40,24 +42,35 @@ export default function Home() {
 		setQuery(queryParam)
 	}
 
-	return (
-		<div>
-			<div className='w-11/12 h-full mx-auto relative lg:container'>
-				<div className='flex mt-10 mb-7 justify-start items-center content-center'>
-					<h1 className='mr-5 w-full text-3xl rounded py-5 pl-2 bg-yellow-400 font-bold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white'>
-						Recetas
-					</h1>
+	if (session) {
+		return (
+			<div>
+				<div className='w-11/12 h-full mx-auto relative lg:container'>
+					<div className='flex flex-col mt-10 mb-7 justify-start items-center content-center'>
+						<h1 className='mr-5 w-full text-3xl rounded py-5 pl-2 bg-yellow-400 font-bold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white'>
+							Recetas
+						</h1>
+						<h2 className='mr-5 w-full text-xl rounded py-5 pl-2 tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white'>
+							{session.user.name}
+						</h2>
+					</div>
+					<Searchbar getQuery={handleSearchBar} />
+
+					{query === '' ? (
+						<CardList products={recipesList} />
+					) : (
+						<CardList products={searchedList} />
+					)}
+
+					<CategoriesList getCategory={getCategory} />
 				</div>
-				<Searchbar getQuery={handleSearchBar} />
-
-				{query === '' ? (
-					<CardList products={recipesList} />
-				) : (
-					<CardList products={searchedList} />
-				)}
-
-				<CategoriesList getCategory={getCategory} />
 			</div>
-		</div>
-	)
+		)
+	} else {
+		return (
+			<div>
+				<AuthCard />
+			</div>
+		)
+	}
 }

@@ -1,27 +1,36 @@
 import { useSession, signIn, signOut } from 'next-auth/react'
+import LoginButton from '../components/login_btn'
+import Image from 'next/image'
 
 const Login = () => {
 	const { data: session } = useSession()
+		return (
+			<>
+				{/* bg-gradient-to-t from-orange-500 to-yellow-200 */}
+				<div className=' h-screen bg-gradient-to-t from-orange-300 to-yellow-200'>
+					<Image
+						alt='this is the image for the login page'
+						src='/food.webp'
+						width={500}
+						height={400}
+					/>
+					<div className='my-10'>
+						<h1 className='font-semibold text-2xl text-center'>
+							¡Bienvenido a tu lugar de comida favorito!	
+						</h1>
 
-	if (!session) {
-		return (
-			<>
-				<div>
-					<h1 className='font-semibold text-2xl'>¡Bienvenido a tu lugar de comida favorito! 🥞</h1>
-					<p className='font-normal '>Para poder disfrutar de miles de recetas deliciosas, debes iniciar sesión!</p>
-                    <button className='bg-red-500 text-white px-5 py-2 rounded-md my-5' onClick={()=> signIn()} >Iniciar sesesion con Google</button>
+						<p className='font-normal text-center my-5'>
+							Para poder disfrutar de miles de recetas deliciosas,
+							debes iniciar sesión! Puedes hacerlos utilizando tu cuenta de Google
+						</p>
+					</div>
+
+					<div className='flex justify-center items-center'>
+						<LoginButton />
+					</div>
 				</div>
 			</>
 		)
-	} else {
-		return (
-			<>
-				<div>
-					<h1>Hey! {session.user.name} how you doing?</h1>
-				</div>
-			</>
-		)
-	}
 }
 
 export default Login

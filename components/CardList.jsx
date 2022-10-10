@@ -13,22 +13,22 @@ export default function CardList({ products }) {
 
 						<Link key={product.id} href={`/recipes/${product.id}`}>
 							<a className='group'>
-								<div className='aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8'>
+								<div className='aspect-w-1 aspect-h-1 w-full overflow-hidden rounded bg-gray-200 xl:aspect-w-7 xl:aspect-h-8'>
 									<Image
 										alt={'preview'}
-										width={'350px'}
-										height={'200px'}
+										width={'400px'}
+										height={'250px'}
 										src={product.image}
 										className='h-full w-full object-cover object-center group-hover:opacity-75'
 									/>
 								</div>
 								<h3 className='mt-7 text-md font-bold'>
-									{product.title}
+									{product.title ? product.title : product.name} 
 								</h3>
 
 								<div></div>
 								<p className='flex justify-end mt-1 text-md text-gray-900'>
-									Publicada por: {product.sourceName}
+									Publicada por: {product.sourceName ? product.sourceName : 'Guardado en favorito'}
 								</p>
 
 								<p className='w-32 mt-10 text-center rounded py-3  bg-yellow-400 text-md text-black'>

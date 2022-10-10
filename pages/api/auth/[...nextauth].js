@@ -11,17 +11,15 @@ export default NextAuth({
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 		}),
 	],
-	jwt: {
-		encryption: true,
-	},
 	secret: process.env.JWT_SECRET,
 
 	callbacks: {
-		async jwt(token, account) {
-			if (account?.accessToken) {
-				token.accessToken = account.accessToken
+		session: async ({ session, token }) => {
+			// Send properties to the client, like an access_token and user id from a provider.
+			if (session?.user) {
+				session.user.id = token.sub
 			}
-			return token
+			return session
 		},
 		redirect: async (url, _baseUrl) => {
 			if (url === '/user') {
@@ -29,5 +27,8 @@ export default NextAuth({
 			}
 			return Promise.resolve('/')
 		},
+	},
+	session: {
+		strategy: 'jwt',
 	},
 })
