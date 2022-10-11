@@ -1,5 +1,5 @@
 
-import client from '../../../lib/prismadb'
+import client from '../../../lib/prisma'
 
 export default async function handle(req, res) {
     const { recipe, userId } = req.body

@@ -14,7 +14,7 @@ const Recipe = ({ data }) => {
 
 	const styles = {
 		list_container:
-			'[&>ol]:list-decimal [&>ol]:mx-auto [&>ol]:text-justify ',
+			'[&>ol]:list-decimal [&>ol]:text-justify ',
 		list_item:
 			'[&>ol>li]:border [&>ol>li]:px-2 [&>ol>li]:py-5 [&>ol>li]:my-5 [&>ol>li]:rounded-lg [&>ol>li]:px-5 ',
 	}
@@ -62,7 +62,7 @@ const Recipe = ({ data }) => {
 				height={250}
 			/>
 
-			<div className='w-4/5 mx-auto'>
+			<div className='w-11/12 mx-auto flex flex-col'>
 					
 				<p className='text-3xl text-center font-semibold dark:text-white'>
 					{data.recipe.title}
@@ -72,7 +72,7 @@ const Recipe = ({ data }) => {
 
 				<button
 					onClick={() => submitRecipe()}
-					className='border border-green-300 py-5 px-5 rounded-lg'
+					className='border my-5 text-white bg-green-500 py-5 px-5 rounded-lg'
 				>
 					Añadir a favoritos
 				</button>

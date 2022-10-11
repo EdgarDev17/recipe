@@ -1,7 +1,7 @@
 import Searchbar from '../components/inputBar'
 import { useSession } from 'next-auth/react'
-import AuthCard from './../components/authenticationCard'
-import CardList from '../components/CardList'
+import AuthCard from '../components/authenticationCard'
+import CardList from '../components/RecipesList'
 
 export default function Top() {
 	const { data: session } = useSession()

@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react'
-import AuthCard from './../components/authenticationCard'
+import AuthCard from '../components/authenticationCard'
 import Image from 'next/image'
 
 export default function Account() {

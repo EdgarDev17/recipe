@@ -2,11 +2,10 @@ import AuthCard from '../components/authenticationCard'
 import { getSession } from 'next-auth/react'
 
 import { GetServerSideProps } from 'next'
-import client from '../lib/prismadb'
-import CardList from '../components/CardList'
+import client from '../lib/prisma'
+import CardList from '../components/RecipesList'
 
 export default function Favorites({ user, favorites }) {
-	console.log(favorites)
 
 	if (user) {
 		return (

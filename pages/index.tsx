@@ -1,9 +1,9 @@
-import CardList from '../components/CardList'
 import { CategoriesList } from '../components/CategoriesList'
 import { useEffect, useState } from 'react'
 import Searchbar from '../components/inputBar'
-import AuthCard from './../components/authenticationCard'
+import AuthCard from '../components/authenticationCard'
 import { useSession } from 'next-auth/react'
+import RecipeList from '../components/RecipesList'
 
 export default function Home() {
 	const [recipesList, setRecipesList] = useState([{}])
@@ -57,12 +57,12 @@ export default function Home() {
 					<Searchbar getQuery={handleSearchBar} />
 
 					{query === '' ? (
-						<CardList products={recipesList} />
+						<RecipeList recipeArray={recipesList} />
 					) : (
-						<CardList products={searchedList} />
+						<RecipeList recipeArray={searchedList} />
 					)}
 
-					<CategoriesList getCategory={getCategory} />
+					{/* <CategoriesList getCategory={getCategory} /> */}
 				</div>
 			</div>
 		)
