@@ -11,7 +11,6 @@ export default function Favorites({ user, favorites }) {
 				<h2 className='text-4xl font-bold dark:text-white'>
 					Tus favoritos
 				</h2>
-
 				<FavoriteList key={1} favArray={favorites}/>
 			</div>
 		)
@@ -22,6 +21,7 @@ export default function Favorites({ user, favorites }) {
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 	const session = await getSession({ req })
+
 	const favorites = await client.favorite.findMany({
 		where: {
 			user: {

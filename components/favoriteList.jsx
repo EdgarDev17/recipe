@@ -1,4 +1,3 @@
-import Recipe from './Recipe'
 import Favorite from './favorite'
 
 export default function FavoriteList({ favArray }) {

@@ -1,6 +1,6 @@
 import { CategoriesList } from '../components/CategoriesList'
 import { useEffect, useState } from 'react'
-import Searchbar from '../components/inputBar'
+import Searchbar from '../components/InputBar'
 import AuthCard from '../components/authenticationCard'
 import { useSession } from 'next-auth/react'
 import RecipeList from '../components/RecipesList'
@@ -62,7 +62,7 @@ export default function Home() {
 						<RecipeList recipeArray={searchedList} />
 					)}
 
-					{/* <CategoriesList getCategory={getCategory} /> */}
+				{/* TODO: MAKE CATEGORIES LIST AND RENDER THEM */}
 				</div>
 			</div>
 		)

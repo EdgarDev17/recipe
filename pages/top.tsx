@@ -1,4 +1,4 @@
-import Searchbar from '../components/inputBar'
+import Searchbar from '../components/InputBar'
 import { useSession } from 'next-auth/react'
 import AuthCard from '../components/authenticationCard'
 import CardList from '../components/RecipesList'
