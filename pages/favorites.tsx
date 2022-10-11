@@ -1,20 +1,18 @@
 import AuthCard from '../components/authenticationCard'
 import { getSession } from 'next-auth/react'
-
 import { GetServerSideProps } from 'next'
 import client from '../lib/prisma'
-import CardList from '../components/RecipesList'
+import FavoriteList from './../components/favoriteList';
 
 export default function Favorites({ user, favorites }) {
-
 	if (user) {
 		return (
 			<div>
 				<h2 className='text-4xl font-bold dark:text-white'>
 					Tus favoritos
 				</h2>
-                <CardList products={favorites}/>
 
+				<FavoriteList key={1} favArray={favorites}/>
 			</div>
 		)
 	}
@@ -24,7 +22,6 @@ export default function Favorites({ user, favorites }) {
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 	const session = await getSession({ req })
-
 	const favorites = await client.favorite.findMany({
 		where: {
 			user: {
