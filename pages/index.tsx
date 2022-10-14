@@ -57,9 +57,9 @@ export default function Home() {
 					<Searchbar getQuery={handleSearchBar} />
 
 					{query === '' ? (
-						<RecipeList recipeArray={recipesList} />
+						<RecipeList key={1} recipeArray={recipesList} />
 					) : (
-						<RecipeList recipeArray={searchedList} />
+						<RecipeList key={2} recipeArray={searchedList} />
 					)}
 
 				{/* TODO: MAKE CATEGORIES LIST AND RENDER THEM */}

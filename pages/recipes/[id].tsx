@@ -1,8 +1,8 @@
 import DOMPurify from 'isomorphic-dompurify'
 import Image from 'next/image'
-import IngredientData from '../../components/ingredientList'
 import { useState } from 'react'
 import { useSession } from 'next-auth/react'
+import IngredientData from '../../components/IngredientList'
 
 const Recipe = ({ data }) => {
 	const [recipe, setRecipe] = useState({
