@@ -1,5 +1,4 @@
 import Recipe from './Recipe'
-import { useState } from 'react'
 
 export default function RecipeList({ recipeArray }) {
 
@@ -18,7 +17,7 @@ export default function RecipeList({ recipeArray }) {
 	}
 
 	return (
-		<div className='mx-auto max-w-2xl py-16 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-5'>
+		<div className='flex justify-center flex-col gap-y-10 mx-auto max-w-2xl py-16 sm:py-24 sm:px-6 lg:flex-row lg:gap-x-5 lg:flex-wrap lg:max-w-7xl lg:px-5'>
 			{recipeArray ? renderRecipe(): <p>Error al cargar las recetas</p>}
 		</div>
 	)

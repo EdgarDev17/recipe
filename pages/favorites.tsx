@@ -5,7 +5,6 @@ import client from '../lib/prisma'
 import FavoriteList from "../components/FavoriteList";
 
 export default function Favorites({user, favorites}) {
-    console.log(favorites)
     
     if (user) {
         return (

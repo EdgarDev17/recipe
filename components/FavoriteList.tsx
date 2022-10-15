@@ -18,7 +18,7 @@ export default function FavoriteList({favArray}) {
     }
 
     return (
-        <div className='w-full flex flex-col gap-y-20'>
+        <div className='w-full flex flex-col gap-y-20 lg:flex-row'>
             {favArray ? renderFav() : <ErrorCard error={'Error al cargar los favoritos'}/>}
         </div>
     )
