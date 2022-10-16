@@ -30,6 +30,7 @@ const Recipe = ({ data }) => {
 					ingredientName={ingredient.name}
 					amount={ingredient.amount}
 					unit={ingredient.unit}
+                    instructions={''}
 				/>
 			)
 		})

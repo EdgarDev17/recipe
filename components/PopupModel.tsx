@@ -3,16 +3,22 @@ import React from 'react'
 type Props = {
     message: string
     mainBtnText: string
-    secondaryBtnText: string
+    secondaryBtnText?: string
     handleAgreedBtn: () => void
-    handleOnCancel
+    handleOnCancel?: () => void
+    variant: 'twoButtons' | 'oneButton'
+    mainColor: 'red' | 'green'
 }
 
-export const PopupModel = ({message, mainBtnText, secondaryBtnText, handleAgreedBtn, handleOnCancel}: Props) => {
-
-    // 1. create a function handler when user click the OK button
-    // 2. hide the pop up when user click the cancel button
-
+export const PopupModel = ({
+                               message,
+                               mainBtnText,
+                               secondaryBtnText,
+                               handleAgreedBtn,
+                               handleOnCancel,
+                               variant,
+                               mainColor
+                           }: Props) => {
     return (
         <div
             id='popup-modal'
@@ -59,22 +65,24 @@ export const PopupModel = ({message, mainBtnText, secondaryBtnText, handleAgreed
                         <h3 className='mb-5 text-xl font-normal text-black dark:text-gray-400'>
                             {message}
                         </h3>
-                        <button
-                            data-modal-toggle='popup-modal'
-                            type='button'
-                            className='text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-7 py-3 text-center mr-2'
-                            onClick={handleAgreedBtn}
-                        >
-                            {mainBtnText}
-                        </button>
-                        <button
-                            data-modal-toggle='popup-modal'
-                            type='button'
-                            className='text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-7 py-3 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600'
-                            onClick={handleOnCancel}
+                        <div>
+                            <button
+                                data-modal-toggle='popup-modal'
+                                type='button'
+                                className={`text-white bg-${mainColor}-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-7 py-3 text-center mr-2`}
+                                onClick={handleAgreedBtn}
                             >
-                            {secondaryBtnText}
-                        </button>
+                                {mainBtnText}
+                            </button>
+                            <button
+                                data-modal-toggle='popup-modal'
+                                type='button'
+                                className='text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-7 py-3 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600'
+                                onClick={handleOnCancel}
+                            >
+                                {secondaryBtnText}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

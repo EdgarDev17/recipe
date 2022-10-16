@@ -37,10 +37,12 @@ function Favorite({id, image, name, url}: Props) {
                 <div className={'w-full flex justify-center items-center'}>
                     <PopupModel
                         message='Desea eliminar la receta?'
-                        mainBtnText='Continar'
+                        mainBtnText='Eliminar'
                         secondaryBtnText='Cancelar'
                         handleAgreedBtn={deleteFavRecipe}
                         handleOnCancel={onCancelPopup}
+                        variant={'oneButton'}
+                        mainColor={'red'}
                     />
                 </div>
             )}

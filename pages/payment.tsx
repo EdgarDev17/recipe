@@ -1,11 +1,19 @@
 import {PaymentForm, CreditCard} from 'react-square-web-payments-sdk'
+import Toast from "../components/Toast";
+import {useState} from "react";
 
 const Payment = () => {
+    const [paymentChecked, setPaymentChecked] = useState(false)
+    const [showToast, setShowToast] = useState(false)
 
-//        TODO: I need to get the credentials from env file
+    const handleToast= () =>{
+        setShowToast(false)
+    }
+
     return (
         <div>
             <div className={'h-screen'}>
+                {showToast && <Toast message={'Pago realizado con éxito'} handleOnClick={handleToast}/>}
                 <PaymentForm
                     applicationId={process.env.NEXT_PUBLIC_APP_ID}
                     locationId={process.env.NEXT_PUBLIC_LOCATION_ID}
@@ -21,7 +29,10 @@ const Payment = () => {
                                 locationId: process.env.NEXT_PUBLIC_LOCATION_ID
                             })
                         })
-                        console.log(response.json())
+                        if(response.statusText === 'OK'){
+                            setPaymentChecked(true)
+                            setShowToast(true)
+                        }
                     }}>
                     <CreditCard/>
                 </PaymentForm>
