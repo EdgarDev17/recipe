@@ -4,8 +4,6 @@ import {NextApiRequest, NextApiResponse} from "next";
 // @ts-ignore
 BigInt.prototype.toJSON = function (){return this.toString()}
 
-console.log('SERVER SIDE PAY ' + process.env.NEXT_PUBLIC_SQUARE_ACCESS_TOKEN)
-
 // First I need to inicialze my Client, this recieve 2 params, accessToken and environment
 const client = new Client({
     accessToken: process.env.NEXT_PUBLIC_SQUARE_ACCESS_TOKEN,
