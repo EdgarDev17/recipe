@@ -22,8 +22,8 @@ const Payment = () => {
     return (
         <div>
             <div className={'h-screen flex flex-col items-center justify-center'}>
-                {errorToast &&  <Toast message={'Error al realizar el pago'} handleOnClick={handleErrorToast} variant={'error'} color={'red'}/>}
-                {successToast && <Toast message={'Pago realizado con éxito'} handleOnClick={handleSuccessToast} variant={'success'} color={'green'}/> }
+                { errorToast &&  <Toast message={'Error al realizar el pago'} handleOnClick={handleErrorToast} variant={'error'} color={'red'}/> }
+                { successToast && <Toast message={'Pago realizado con éxito'} handleOnClick={handleSuccessToast} variant={'success'} color={'green'}/> }
                 <PaymentForm
                     applicationId={process.env.NEXT_PUBLIC_APP_ID}
                     locationId={process.env.NEXT_PUBLIC_LOCATION_ID}
@@ -39,10 +39,9 @@ const Payment = () => {
                                 locationId: process.env.NEXT_PUBLIC_LOCATION_ID
                             })
                         })
-                        console.log('RESPONSE HERE 😀')
-                        console.log(response)
+//                        console.log('RESPONSE HERE 😀')
+//                        console.log(response)
 
-                        // @ts-ignore
                         if(response.status === '200'){
                             setPaymentChecked(true)
                             setSuccessToast(true)
