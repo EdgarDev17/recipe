@@ -4,7 +4,7 @@ import {useRouter} from 'next/router'
 import React, {useEffect, useState} from 'react'
 import {PopupModel} from './PopupModel'
 
-type Props = {
+type Props = { 
     id: string
     image: string
     name: string
