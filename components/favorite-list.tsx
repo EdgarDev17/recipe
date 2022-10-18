@@ -1,5 +1,5 @@
-import ErrorCard from './ErrorCard'
-import Favorite from './Favorite'
+import ErrorCard from './error-card'
+import Favorite from './favorite'
 
 export default function FavoriteList({favArray}) {
 

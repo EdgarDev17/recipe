@@ -1,6 +1,6 @@
 import {useSession} from 'next-auth/react'
-import LoginButton from "../components/login_btn";
-import AuthCard from '../components/authenticationCard'
+import LoginButton from "../components/login-btn";
+import AuthCard from '../components/authentication-card'
 import Image from 'next/image'
 
 export default function Account() {

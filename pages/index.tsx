@@ -1,9 +1,9 @@
-import { CategoriesList } from '../components/CategoriesList'
+import { CategoriesList } from '../components/categories-list'
 import { useEffect, useState } from 'react'
-import Searchbar from '../components/InputBar'
-import AuthCard from '../components/authenticationCard'
+import Searchbar from '../components/input-bar'
+import AuthCard from '../components/authentication-card'
 import { useSession } from 'next-auth/react'
-import RecipeList from '../components/RecipesList'
+import RecipeList from '../components/recipes-list'
 
 export default function Home() {
 	const [recipesList, setRecipesList] = useState([{}])

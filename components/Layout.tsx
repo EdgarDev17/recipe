@@ -1,4 +1,4 @@
-import { MenuBar } from './MenuBar'
+import { MenuBar } from './menu-bar'
 import { useRouter } from 'next/router'
 
 export default function Layout({ children }) {

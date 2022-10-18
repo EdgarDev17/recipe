@@ -1,5 +1,5 @@
 import { useSession, signIn, signOut } from 'next-auth/react'
-import LoginButton from '../components/login_btn'
+import LoginButton from '../components/login-btn'
 import Image from 'next/image'
 
 const Login = () => {

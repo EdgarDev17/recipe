@@ -1,8 +1,8 @@
-import AuthCard from '../components/authenticationCard'
+import AuthCard from '../components/authentication-card'
 import {getSession} from 'next-auth/react'
 import {GetServerSideProps} from 'next'
 import client from '../lib/prisma'
-import FavoriteList from "../components/FavoriteList";
+import FavoriteList from "../components/favorite-list";
 
 export default function Favorites({user, favorites}) {
     

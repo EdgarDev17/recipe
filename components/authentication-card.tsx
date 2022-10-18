@@ -1,4 +1,4 @@
-import LoginButton from '../components/login_btn'
+import LoginButton from './login-btn'
 import Link from 'next/link'
 
 const AuthCard = () => {
