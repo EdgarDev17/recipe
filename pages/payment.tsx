@@ -3,7 +3,6 @@ import Toast from "../components/Toast";
 import {useState} from "react";
 
 
-
 const Payment = () => {
 
     const [paymentChecked, setPaymentChecked] = useState(false)
@@ -11,19 +10,23 @@ const Payment = () => {
     const [successToast, setSuccessToast] = useState(false)
 
 
-    const handleSuccessToast = () =>{
+    const handleSuccessToast = () => {
         setSuccessToast(false)
     }
 
-    const handleErrorToast = () =>{
+    const handleErrorToast = () => {
         setErrorToast(false)
     }
 
     return (
         <div>
             <div className={'h-screen flex flex-col items-center justify-center'}>
-                { errorToast &&  <Toast message={'Error al realizar el pago'} handleOnClick={handleErrorToast} variant={'error'} color={'red'}/> }
-                { successToast && <Toast message={'Pago realizado con éxito'} handleOnClick={handleSuccessToast} variant={'success'} color={'green'}/> }
+                {errorToast &&
+                    <Toast message={'Error al realizar el pago'} handleOnClick={handleErrorToast} variant={'error'}
+                           color={'red'}/>}
+                {successToast &&
+                    <Toast message={'Pago realizado con éxito'} handleOnClick={handleSuccessToast} variant={'success'}
+                           color={'green'}/>}
                 <PaymentForm
                     applicationId={process.env.NEXT_PUBLIC_APP_ID}
                     locationId={process.env.NEXT_PUBLIC_LOCATION_ID}
@@ -39,16 +42,19 @@ const Payment = () => {
                                 locationId: process.env.NEXT_PUBLIC_LOCATION_ID
                             })
                         })
-//                        console.log('RESPONSE HERE 😀')
-//                        console.log(response)
 
-                        if(response.status === '200'){
+
+                        console.log(response)
+                        if (response.ok) {
                             setPaymentChecked(true)
                             setSuccessToast(true)
-                        } else if (response.status == '500'){
+                        } else {
                             setPaymentChecked(false)
                             setErrorToast(true)
                         }
+
+                        let paymentData = JSON.stringify(await response.json(), null, 2)
+                        console.log(paymentData)
                     }}>
                     <CreditCard/>
                 </PaymentForm>

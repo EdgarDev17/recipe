@@ -1,8 +1,11 @@
-import {Client, Environment, ApiError} from 'square'
+import {Client, Environment} from 'square'
 import {randomUUID} from 'crypto'
 import {NextApiRequest, NextApiResponse} from "next";
+
 // @ts-ignore
-BigInt.prototype.toJSON = function (){return this.toString()}
+BigInt.prototype.toJSON = function () {
+    return this.toString()
+}
 
 // First I need to inicialze my Client, this recieve 2 params, accessToken and environment
 const client = new Client({
@@ -12,7 +15,6 @@ const client = new Client({
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method == 'POST') {
-
         const {result, statusCode} = await client.paymentsApi.createPayment({
             idempotencyKey: randomUUID(),
             sourceId: req.body.sourceId,
@@ -23,11 +25,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             },
         })
 
-        console.log('EL RESULTADO DEL PAGO -------------------------------------------------')
         console.log(result)
         res.status(200).json(result)
     } else {
-        res.status(500)
+        res.status(500).send({error:'error'})
     }
 
 }

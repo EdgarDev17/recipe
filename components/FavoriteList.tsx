@@ -12,6 +12,7 @@ export default function FavoriteList({favArray}) {
                     name={fav.name}
                     image={fav.image}
                     url={fav.url}
+                    
                 />
             )
         })
