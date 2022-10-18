@@ -1,4 +1,4 @@
-import Recipe from './recipe'
+import Recipe from './recipe-item'
 
 export default function RecipeList({ recipeArray }) {
 

@@ -1,5 +1,5 @@
 import {PaymentForm, CreditCard} from 'react-square-web-payments-sdk'
-import Toast from "../components/toast";
+import Toast from "../components/toast-icon";
 import {useState} from "react";
 
 
