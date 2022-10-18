@@ -42,6 +42,7 @@ const Recipe = ({ data }) => {
 
 	async function submitRecipe() {
 		try {
+            // @ts-ignore
 			const userId = session.user.id
 			const body = { recipe, userId}
 			await fetch('/api/recipe', {
