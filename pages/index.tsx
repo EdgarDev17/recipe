@@ -24,6 +24,7 @@ export default function Home() {
 			})
 	}, [])
 
+		
 	useEffect(() => {
 		fetch(
 			`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.NEXT_PUBLIC_API_KEY}&query=${query}`
