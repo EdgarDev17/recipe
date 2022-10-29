@@ -4,33 +4,37 @@ import Image from 'next/image'
 
 const Login = () => {
 	const { data: session } = useSession()
-		return (
-			<>
-				{/* bg-gradient-to-t from-orange-500 to-yellow-200 */}
-				<div className=' h-screen bg-gradient-to-t from-orange-300 to-yellow-200'>
+	return (
+		<>
+			<div className='sm:flex sm:items-center sm:justify-center h-screen bg-gradient-to-t from-orange-300 to-yellow-200'>
+				<div className='sm:bg-white rounded-xl'>
 					<Image
 						alt='this is the image for the login page'
 						src='/food.webp'
 						width={500}
-						height={400}
+						height={370}
+						className='rounded-xl'
 					/>
-					<div className='my-10'>
-						<h1 className='font-semibold text-2xl text-center'>
-							¡Bienvenido a tu lugar de comida favorito!	
-						</h1>
+				</div>
+				<div className='my-10 sm:h-80  sm:flex sm:flex-col sm:justify-center sm:items-center sm:w-2/4 gap-y-5 sm:bg-white rounded-xl sm:max-w-xl'>
 
-						<p className='font-normal text-center my-5'>
-							Para poder disfrutar de miles de recetas deliciosas,
-							debes iniciar sesión! Puedes hacerlos utilizando tu cuenta de Google
-						</p>
-					</div>
+					<h1 className='font-semibold text-2xl text-center'>
+						¡Bienvenido a tu lugar de comida favorito!
+					</h1>
+
+					<p className='font-normal text-center my-5'>
+						Para poder disfrutar de miles de recetas deliciosas,
+						debes iniciar sesión! Puedes hacerlos utilizando tu
+						cuenta de Google
+					</p>
 
 					<div className='flex justify-center items-center'>
 						<LoginButton />
 					</div>
 				</div>
-			</>
-		)
+			</div>
+		</>
+	)
 }
 
 export default Login
