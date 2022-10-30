@@ -23,7 +23,7 @@ const Login = () => {
 
 					<p className='font-normal text-center my-5'>
 						Para poder disfrutar de miles de recetas deliciosas,
-						debes iniciar sesión! Puedes hacerlos utilizando tu
+						debes iniciar sesión! Puedes hacerlo utilizando tu
 						cuenta de Google
 					</p>
 

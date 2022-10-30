@@ -2,8 +2,10 @@ import { CategoriesList } from '../components/categories-list'
 import { useEffect, useState } from 'react'
 import Searchbar from '../components/input-bar'
 import AuthCard from '../components/authentication-card'
-import { useSession } from 'next-auth/react'
+import { useSession, getSession } from 'next-auth/react'
 import RecipeList from '../components/recipes-list'
+	
+
 
 export default function Home() {
 	const [recipesList, setRecipesList] = useState([{}])
@@ -63,7 +65,6 @@ export default function Home() {
 						<RecipeList key={2} recipeArray={searchedList} />
 					)}
 
-				{/* TODO: MAKE CATEGORIES LIST AND RENDER THEM */}
 				</div>
 			</div>
 		)
@@ -74,4 +75,27 @@ export default function Home() {
 			</div>
 		)
 	}
+}
+
+
+import { unstable_getServerSession } from "next-auth/next"
+import { GetServerSideProps } from 'next'
+
+export async function getServerSideProps({req}) {
+  const session = await getSession({req})
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login' ,
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {
+      session,
+    },
+  }
 }
