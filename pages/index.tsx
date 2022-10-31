@@ -7,7 +7,7 @@ import RecipeList from '../components/recipes-list'
 import { useRecipe } from '../hooks/useRecipe'
 
 export default function Home() {
-	const [category, setCategory] = useState('main course')
+	// const [category, setCategory] = useState('main course')
 	const { data: session } = useSession()
 	const { recipesList, handleSearch , queryRecipe, searchedList} = useRecipe()
 
@@ -17,7 +17,7 @@ export default function Home() {
 			<div>
 				<div className='w-11/12 h-full mx-auto relative lg:container'>
 					<div className='flex flex-col mt-10 mb-7 justify-start items-center content-center'>
-						<h1 className='mr-5 w-full text-3xl rounded py-5 pl-2 bg-yellow-400 font-bold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white'>
+						<h1 className='mr-5 w-full text-3xl rounded py-5 pl-2 bg-yellow-400 font-bold tracking-tight leading-none text-black md:text-5xl lg:text-6xl '>
 							Recetas
 						</h1>
 					</div>

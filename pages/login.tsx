@@ -1,9 +1,8 @@
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 import LoginButton from '../components/login-btn'
 import Image from 'next/image'
 
 const Login = () => {
-	const { data: session } = useSession()
 	return (
 		<>
 			<div className='sm:flex sm:items-center sm:justify-center h-screen bg-gradient-to-t from-orange-300 to-yellow-200'>
@@ -34,6 +33,23 @@ const Login = () => {
 			</div>
 		</>
 	)
+}
+
+export async function getServerSideProps({req}){
+	const session = await getSession({req})
+
+	if(session){
+		return {
+			redirect: {
+				destination: '/',
+				permanent: false
+			}
+		}
+	}
+
+	return {
+		props: {}
+	}
 }
 
 export default Login

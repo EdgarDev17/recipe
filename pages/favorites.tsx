@@ -8,7 +8,7 @@ export default function Favorites({ user, favorites }) {
 	if (user) {
 		return (
 			<div className={'w-11/12 h-screen mx-auto'}>
-				<h2 className='mt-10 text-3xl lg:text-6xl font-bold dark:text-white lg:ml-10'>
+				<h2 className='mt-10 text-3xl lg:text-6xl font-bold  lg:ml-10'>
 					Tus favoritos 
 				</h2>
 
@@ -33,7 +33,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 			},
 		},
 	})
-
 
 	return {
 		props: {

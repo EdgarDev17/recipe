@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { PopupModel } from './popup-modal'
 import { GrFavorite, GrFormClose } from 'react-icons/gr'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useFavorite } from '../hooks/useFavorite'
 
 type Props = {
 	id: string
@@ -16,17 +17,10 @@ type Props = {
 export default function Favorite({ id, image, name, url }: Props) {
 	const [showModal, setShowModal] = useState(false)
 	const Router = useRouter()
-
-	console.log(id);
+	const {deleteFavRecipe} = useFavorite()
 	
-	async function deleteFavRecipe() {
-		const body = { id }
-		await fetch('/api/recipe', {
-			method: 'DELETE',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(body),
-		})
-
+	async function handleDeleteFavorite() {
+		await deleteFavRecipe(id)
 		setShowModal(false)
 		await Router.push('/favorites')
 	}
@@ -45,7 +39,7 @@ export default function Favorite({ id, image, name, url }: Props) {
 							message='¿Desea eliminar la receta?'
 							mainBtnText='Eliminar'
 							secondaryBtnText='Cancelar'
-							handleAgreedBtn={deleteFavRecipe}
+							handleAgreedBtn={handleDeleteFavorite}
 							handleOnCancel={onCancelPopup}
 							variant='error'
 						/>
@@ -74,27 +68,17 @@ export default function Favorite({ id, image, name, url }: Props) {
 							</h3>
 						</div>
 
-						{/* Info Section */}
-
 						<div className='w-52 flex flex-col gap-y-3 py-5'>
 							<div className='w-full flex justify-around items-center'>
-								<GrFavorite
-									color='#ffffff'
-									size={30}
-									onClick={() => setShowModal(true)}
-									className='cursor-pointer '
-								/>
+							<Link href={`/recipes/${url}`}>
+									<a className='text-slate-900'>Saber Más</a>
+								</Link>
 
 								<GrFormClose
 									className='cursor-pointer'
 									size={35}
 									onClick={() => setShowModal(true)}
 								/>
-							</div>
-							<div className=''>
-								<Link href={`/recipes/${url}`}>
-									<a className=''>Saber Más</a>
-								</Link>
 							</div>
 						</div>
 					</div>

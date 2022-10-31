@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function Account() {
     const {data: session} = useSession()
-    console.log(session)
+
     if (session) {
         return (
             <div className={'w-11/12 mx-auto h-screen '}>
