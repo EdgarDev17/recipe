@@ -6,14 +6,17 @@ type Props = {
 	message: string
 	mainBtnText: string
 	secondaryBtnText?: string
-	handleAgreedBtn: () => void
+	handleAgreedBtn?: () => void
 	handleOnCancel?: () => void
 	variant: 'error' | 'success' | 'warning' | 'info'
+	oneButton: boolean
 }
 
 const variants = {
 	error: 'bg-red-500',
 	success: 'bg-green-500',
+	warning: 'bg-yellow-500',
+	info: 'bg-blue-500',
 }
 
 export const PopupModel = ({
@@ -23,6 +26,7 @@ export const PopupModel = ({
 	handleAgreedBtn,
 	handleOnCancel,
 	variant,
+	oneButton,
 }: Props) => {
 	return (
 		<AnimatePresence>
@@ -77,25 +81,42 @@ export const PopupModel = ({
 								{message}
 							</h3>
 							<div>
-								<button
-									data-modal-toggle='popup-modal'
-									type='button'
-									className={classNames(
-										variants[variant],
-										'text-white hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-7 py-3 text-center mr-2'
-									)}
-									onClick={handleAgreedBtn}
-								>
-									{mainBtnText}
-								</button>
-								<button
-									data-modal-toggle='popup-modal'
-									type='button'
-									className='text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-7 py-3 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600'
-									onClick={handleOnCancel}
-								>
-									{secondaryBtnText}
-								</button>
+								{oneButton ? (
+									<button
+										data-modal-toggle='popup-modal'
+										type='button'
+										className={classNames(
+											variants[variant],
+											'text-white hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-7 py-3 text-center mr-2'
+										)}
+										onClick={handleAgreedBtn}
+									>
+										{mainBtnText}
+									</button>
+								) : (
+									<>
+										<button
+											data-modal-toggle='popup-modal'
+											type='button'
+											className={classNames(
+												variants[variant],
+												'text-white hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-7 py-3 text-center mr-2'
+											)}
+											onClick={handleAgreedBtn}
+										>
+											{mainBtnText}
+										</button>
+
+										<button
+											data-modal-toggle='popup-modal'
+											type='button'
+											className='text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-7 py-3 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600'
+											onClick={handleOnCancel}
+										>
+											{secondaryBtnText}
+										</button>
+									</>
+								)}
 							</div>
 						</div>
 					</div>

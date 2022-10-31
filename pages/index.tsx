@@ -4,43 +4,13 @@ import Searchbar from '../components/input-bar'
 import AuthCard from '../components/authentication-card'
 import { useSession, getSession } from 'next-auth/react'
 import RecipeList from '../components/recipes-list'
+import { useRecipe } from '../hooks/useRecipe'
 
 export default function Home() {
-	const [recipesList, setRecipesList] = useState([{}])
-	const [searchedList, setSearchedList] = useState()
 	const [category, setCategory] = useState('main course')
-	const [query, setQuery] = useState('')
 	const { data: session } = useSession()
+	const { recipesList, handleSearch , queryRecipe, searchedList} = useRecipe()
 
-	useEffect(() => {
-		fetch(
-			`https://api.spoonacular.com/recipes/random?apiKey=${process.env.NEXT_PUBLIC_API_KEY}&number=10`
-		)
-			.then((response) => {
-				return response.json()
-			})
-			.then((data) => {
-				setRecipesList(data.recipes)
-			})
-	}, [])
-
-	useEffect(() => {
-		fetch(
-			`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.NEXT_PUBLIC_API_KEY}&query=${query}`
-		)
-			.then((response) => response.json())
-			.then((data) => {
-				setSearchedList(data.results)
-			})
-	}, [query])
-
-	function getCategory(categoryParam) {
-		setCategory(categoryParam)
-	}
-
-	function handleSearchBar(queryParam) {
-		setQuery(queryParam)
-	}
 
 	if (session) {
 		return (
@@ -53,12 +23,12 @@ export default function Home() {
 					</div>
 
 					<Searchbar
-						getQuery={handleSearchBar}
+						getQuery={handleSearch}
 						placeholder={''}
 						label={'Nombre de la receta'}
 					/>
 
-					{query === '' ? (
+					{queryRecipe === '' ? (
 						<RecipeList key={1} recipeArray={recipesList} />
 					) : (
 						<RecipeList key={2} recipeArray={searchedList} />

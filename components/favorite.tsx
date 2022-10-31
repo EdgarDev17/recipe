@@ -17,6 +17,8 @@ export default function Favorite({ id, image, name, url }: Props) {
 	const [showModal, setShowModal] = useState(false)
 	const Router = useRouter()
 
+	console.log(id);
+	
 	async function deleteFavRecipe() {
 		const body = { id }
 		await fetch('/api/recipe', {
@@ -39,6 +41,7 @@ export default function Favorite({ id, image, name, url }: Props) {
 				{showModal && (
 					<div className={'w-full flex justify-center bg-black items-center'}>
 						<PopupModel
+							oneButton={false}
 							message='¿Desea eliminar la receta?'
 							mainBtnText='Eliminar'
 							secondaryBtnText='Cancelar'
