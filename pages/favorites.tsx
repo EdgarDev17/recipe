@@ -7,9 +7,9 @@ import FavoriteList from '../components/favorite-list'
 export default function Favorites({ user, favorites }) {
 	if (user) {
 		return (
-			<div className={'lg:w-11/12 lg:mx-auto'}>
-				<h2 className='ml-5 text-3xl lg:text-6xl font-bold dark:text-white lg:ml-10'>
-					Tus favoritos
+			<div className={'w-11/12 h-screen mx-auto'}>
+				<h2 className='mt-10 text-3xl lg:text-6xl font-bold dark:text-white lg:ml-10'>
+					Tus favoritos 
 				</h2>
 
 				<div className={'mt-10'}>

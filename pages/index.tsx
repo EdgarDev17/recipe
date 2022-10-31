@@ -4,8 +4,6 @@ import Searchbar from '../components/input-bar'
 import AuthCard from '../components/authentication-card'
 import { useSession, getSession } from 'next-auth/react'
 import RecipeList from '../components/recipes-list'
-	
-
 
 export default function Home() {
 	const [recipesList, setRecipesList] = useState([{}])
@@ -26,7 +24,6 @@ export default function Home() {
 			})
 	}, [])
 
-		
 	useEffect(() => {
 		fetch(
 			`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.NEXT_PUBLIC_API_KEY}&query=${query}`
@@ -53,18 +50,19 @@ export default function Home() {
 						<h1 className='mr-5 w-full text-3xl rounded py-5 pl-2 bg-yellow-400 font-bold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white'>
 							Recetas
 						</h1>
-						<h2 className='mr-5 w-full text-xl rounded py-5 pl-2 tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white'>
-							{session.user.name}
-						</h2>
 					</div>
-					<Searchbar getQuery={handleSearchBar} />
+
+					<Searchbar
+						getQuery={handleSearchBar}
+						placeholder={''}
+						label={'Nombre de la receta'}
+					/>
 
 					{query === '' ? (
 						<RecipeList key={1} recipeArray={recipesList} />
 					) : (
 						<RecipeList key={2} recipeArray={searchedList} />
 					)}
-
 				</div>
 			</div>
 		)
@@ -77,25 +75,21 @@ export default function Home() {
 	}
 }
 
+export async function getServerSideProps({ req }) {
+	const session = await getSession({ req })
 
-import { unstable_getServerSession } from "next-auth/next"
-import { GetServerSideProps } from 'next'
+	if (!session) {
+		return {
+			redirect: {
+				destination: '/login',
+				permanent: false,
+			},
+		}
+	}
 
-export async function getServerSideProps({req}) {
-  const session = await getSession({req})
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login' ,
-        permanent: false,
-      },
-    }
-  }
-
-  return {
-    props: {
-      session,
-    },
-  }
+	return {
+		props: {
+			session,
+		},
+	}
 }
