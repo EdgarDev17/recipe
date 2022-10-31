@@ -7,12 +7,12 @@ import FavoriteList from '../components/favorite-list'
 export default function Favorites({ user, favorites }) {
 	if (user) {
 		return (
-			<div className={'w-11/12 h-screen mx-auto'}>
-				<h2 className='mt-10 text-3xl lg:text-6xl font-bold  lg:ml-10'>
-					Tus favoritos 
+			<div className={'w-11/12 max-w-7xl  h-screen mx-auto'}>
+				<h2 className='pt-10 text-3xl lg:text-6xl font-bold'>
+					Tus favoritos
 				</h2>
 
-				<div className={'mt-10'}>
+				<div className={'mt-10 md:mt-20'}>
 					<FavoriteList key={1} favArray={favorites} />
 				</div>
 			</div>

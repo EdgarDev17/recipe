@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { PopupModel } from './popup-modal'
-import { GrFavorite, GrFormClose } from 'react-icons/gr'
-import { motion, AnimatePresence } from 'framer-motion'
+import { GrFormClose } from 'react-icons/gr'
+import { AnimatePresence } from 'framer-motion'
 import { useFavorite } from '../hooks/useFavorite'
 
 type Props = {
@@ -17,8 +17,8 @@ type Props = {
 export default function Favorite({ id, image, name, url }: Props) {
 	const [showModal, setShowModal] = useState(false)
 	const Router = useRouter()
-	const {deleteFavRecipe} = useFavorite()
-	
+	const { deleteFavRecipe } = useFavorite()
+
 	async function handleDeleteFavorite() {
 		await deleteFavRecipe(id)
 		setShowModal(false)
@@ -33,7 +33,11 @@ export default function Favorite({ id, image, name, url }: Props) {
 		<AnimatePresence>
 			<div>
 				{showModal && (
-					<div className={'w-full flex justify-center bg-black items-center'}>
+					<div
+						className={
+							'w-full flex justify-center bg-black items-center'
+						}
+					>
 						<PopupModel
 							oneButton={false}
 							message='¿Desea eliminar la receta?'
@@ -46,7 +50,7 @@ export default function Favorite({ id, image, name, url }: Props) {
 					</div>
 				)}
 				{/* <Link key={id} href={`/recipes/${url}`} */}
-				<div className='flex rounded bg-gray-50 shadow'>
+				<div className='flex rounded h-32 bg-gray-50 shadow-md'>
 					<div className='w-40 rounded flex justify-center items-center'>
 						<Image
 							alt={'food preview'}
@@ -63,22 +67,21 @@ export default function Favorite({ id, image, name, url }: Props) {
 						}
 					>
 						<div>
-							<h3 className='mt-5 text-center font-semibold'>
-								{name}
-							</h3>
+							<h3 className='mt-5 w-52 font-semibold'>{name}</h3>
 						</div>
 
-						<div className='w-52 flex flex-col gap-y-3 py-5'>
-							<div className='w-full flex justify-around items-center'>
-							<Link href={`/recipes/${url}`}>
-									<a className='text-slate-900'>Saber Más</a>
+						<div className='w-52 pt-3'>
+							<div className='w-full flex justify-between items-center'>
+								<Link href={`/recipes/${url}`}>
+									<a className='text-blue-800'>Saber Más</a>
 								</Link>
-
-								<GrFormClose
-									className='cursor-pointer'
-									size={35}
-									onClick={() => setShowModal(true)}
-								/>
+								<div className=' bg-gray-100 hover:bg-red-100 rounded-xl'>
+									<GrFormClose
+										className='cursor-pointer'
+										size={35}
+										onClick={() => setShowModal(true)}
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -87,4 +90,3 @@ export default function Favorite({ id, image, name, url }: Props) {
 		</AnimatePresence>
 	)
 }
-
