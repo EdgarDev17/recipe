@@ -7,17 +7,15 @@ import RecipeList from '../components/recipes-list'
 import { useRecipe } from '../hooks/useRecipe'
 
 export default function Home() {
-	// const [category, setCategory] = useState('main course')
 	const { data: session } = useSession()
-	const { recipesList, handleSearch , queryRecipe, searchedList} = useRecipe()
-
+	const { recipesList, handleSearch, queryRecipe, searchedList } = useRecipe()
 
 	if (session) {
 		return (
 			<div>
-				<div className='w-11/12 h-full mx-auto relative lg:container'>
-					<div className='flex flex-col mt-10 mb-7 justify-start items-center content-center'>
-						<h1 className='mr-5 w-full text-3xl rounded py-5 pl-2 bg-yellow-400 font-bold tracking-tight leading-none text-black md:text-5xl lg:text-6xl '>
+				<div className='w-11/12 h-full mx-auto relative md:max-w-7xl md:container'>
+					<div className='mt-10 mb-7 '>
+						<h1 className='w-full text-3xl rounded py-5 bg-yellow-500 md:bg-white pl-3 md:pl-0 bg-gradient-to-r font-bold tracking-tight leading-none text-black md:text-5xl lg:text-6xl '>
 							Recetas
 						</h1>
 					</div>
