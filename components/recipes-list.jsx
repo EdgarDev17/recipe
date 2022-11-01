@@ -16,7 +16,7 @@ export default function RecipeList({ recipeArray }) {
 	}
 
 	return (
-		<div className='flex justify-center flex-col gap-y-7 py-16 lg:flex-row lg:gap-x-10 lg:flex-wrap'>
+		<div className='flex justify-center flex-col gap-y-7 py-16 lg:grid lg:grid-cols-3 lg:gap-x-10 lg:flex-wrap'>
 			{recipeArray ? renderRecipe() : <p>Error al cargar las recetas</p>}
 		</div>
 	)
