@@ -59,8 +59,9 @@ const Recipe = ({ data, isOnFavorite, favoriteId }) => {
 	}
 
 	function getIngredients(ingredients) {
-		const INGREDIENT_PATH = 'https://spoonacular.com/cdn/ingredients_100x100/'
-		
+		const INGREDIENT_PATH =
+			'https://spoonacular.com/cdn/ingredients_100x100/'
+
 		return ingredients.map((ingredient) => {
 			return (
 				<IngredientData
@@ -114,27 +115,27 @@ const Recipe = ({ data, isOnFavorite, favoriteId }) => {
 	}
 
 	return (
-		<div className='w-full'>
+		<div className='w-full mx-auto max-w-7xl lg:flex lg:flex-col lg:justify-center lg:items-center'>
 			<div>{showModal && succesModal}</div>
 			<div>{showErrorModal && errorModal}</div>
+
 			<Image
 				src={data.recipe.image}
 				alt={'recipe preview'}
 				width={500}
 				height={250}
 			/>
-
 			<div className='w-11/12 mx-auto flex flex-col '>
-				<p className='text-3xl mt-5 text-center font-bold'>
+				<p className='text-3xl mt-5 text-center lg:text-5xl lg:mt-10 font-bold '>
 					{data.recipe.title}
 				</p>
 
-				<p className='text-lg mt-5 text-center text-gray-500'>{`Escrita por ${data.recipe.sourceName}`}</p>
+				<p className='text-lg lg:text-xl mt-5 text-center text-gray-500'>{`Escrita por ${data.recipe.sourceName}`}</p>
 
 				{isRecipeOnFavorite ? (
 					<button
 						onClick={() => setShowErrorModal(true)}
-						className='border my-5 text-white bg-red-500 py-5 px-5 rounded-lg'
+						className='border  my-5 text-white bg-red-500 py-5 px-5 rounded-lg'
 					>
 						Eliminar de favoritos
 					</button>
@@ -147,14 +148,18 @@ const Recipe = ({ data, isOnFavorite, favoriteId }) => {
 					</button>
 				)}
 
-				<div>
-					{getIngredients(data.recipe.extendedIngredients)}
-				</div>
+				<div>{getIngredients(data.recipe.extendedIngredients)}</div>
 
-				<p className='text-xl font-semibold mt-10 mb-5'>Instrucciones </p>
+				<p className='text-xl font-semibold mt-10 mb-5'>
+					Instrucciones{' '}
+				</p>
 
 				<div
-					className={styles.list_container + styles.list_item + ' text-justify'}
+					className={
+						styles.list_container +
+						styles.list_item +
+						' text-justify'
+					}
 					dangerouslySetInnerHTML={{
 						__html: `${cleanInnerHtml(data.recipe.instructions)}`,
 					}}
@@ -171,7 +176,7 @@ export async function getServerSideProps(context) {
 	let response = await fetch(
 		`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
 	)
-	
+
 	let recipe = await response.json()
 	console.log(recipe)
 
