@@ -72,9 +72,11 @@ export default function Favorite({ id, image, name, url }: Props) {
 
 						<div className='w-52 pt-3'>
 							<div className='w-full flex justify-between items-center'>
+								
 								<Link href={`/recipes/${url}`}>
-									<a className='text-blue-800'>Saber Más</a>
+									<a className='text-amber-500'>Saber Más</a>
 								</Link>
+
 								<div className=' bg-gray-100 hover:bg-red-100 rounded-xl'>
 									<GrFormClose
 										className='cursor-pointer'

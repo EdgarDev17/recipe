@@ -14,12 +14,17 @@ const IngredientData = ({
 					src={image}
 					width={50}
 					height={50}
-					className={'rounded-full w-2/5'}
 				/>
 				<div className='w-3/5 flex justify-around items-center'>
-					<p className='w-full'>{ingredientName}</p>
-					<p>
-						{amount} {unit}
+					<p className='w-52'>{ingredientName}</p>
+					
+					<p className='flex gap-x-5 ml-3'>
+						<span className=' rounded w-10 h-10 flex justify-center items-center'>
+						{amount}
+						</span>
+						<span className='rounded w-10 h-10 flex justify-center items-center'>
+						 {unit}
+						</span>
 					</p>
 				</div>
 			</div>

@@ -28,7 +28,7 @@ function Recipe({ id, image, title, sourceName }: Props) {
 							Publicada por: {sourceName}
 						</p>
 
-						<p className='w-32 text-center rounded py-3 mt-5  bg-yellow-400 text-gray-900'>
+						<p className='w-32 text-left mt-5 text-amber-500'>
 							Saber Más
 						</p>
 					</div>
