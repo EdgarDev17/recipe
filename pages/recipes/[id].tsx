@@ -158,7 +158,7 @@ const Recipe = ({ data, isOnFavorite, favoriteId }) => {
 					className={
 						styles.list_container +
 						styles.list_item +
-						' text-justify'
+						' text-justify tracking-wide text-gray-900 bg-gray-50 shadow rounded-lg px-5 py-5 my-5' 
 					}
 					dangerouslySetInnerHTML={{
 						__html: `${cleanInnerHtml(data.recipe.instructions)}`,

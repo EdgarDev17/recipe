@@ -18,7 +18,7 @@ const IngredientData = ({
 				<div className='w-3/5 flex justify-around items-center'>
 					<p className='w-52'>{ingredientName}</p>
 					
-					<p className='flex gap-x-5 ml-3'>
+					<p className='flex  justify-center gap-x-5 ml-3'>
 						<span className=' rounded w-10 h-10 flex justify-center items-center'>
 						{amount}
 						</span>
