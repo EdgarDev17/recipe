@@ -7,8 +7,6 @@ import { GetServerSideProps } from 'next'
 
 export default function Account(data) {
 	const { data: session } = useSession()
-
-    console.log(data);
     
 	if (session) {
 		return (

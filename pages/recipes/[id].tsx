@@ -31,7 +31,7 @@ const Recipe = ({ data, isOnFavorite, favoriteId }) => {
 			secondaryBtnText='Cancelar'
 			oneButton={false}
 			handleAgreedBtn={deleteRecipe}
-			handleOnCancel={() => setShowModal(false)}
+			handleOnCancel={ () => setShowErrorModal(false)}
 		/>
 	)
 

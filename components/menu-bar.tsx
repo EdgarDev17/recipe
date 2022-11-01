@@ -34,13 +34,6 @@ export const MenuBar = () => {
 				</a>
 			</Link>
 
-			<Link href={'/top'}>
-				<a className='flex flex-col justify-center items-center'>
-					<AiOutlineFundView size={'2em'} color={currentRoute === '/top' ? style.active : style.notActive}/>
-					<span className='mt-3'>Popular</span>
-				</a>
-			</Link>
-
 			<Link href={'/account'}>
 				<a className='flex flex-col justify-center items-center'>
 					<AiOutlineUser size={'2em'} color={currentRoute === '/account' ? style.active : style.notActive} />

@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react'
 import AuthCard from '../components/authentication-card'
 import CardList from '../components/recipes-list'
 
-export default function Top() {
+export default function Search() {
 	const { data: session } = useSession()
 
 	if (session) {

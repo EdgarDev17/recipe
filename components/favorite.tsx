@@ -17,6 +17,7 @@ type Props = {
 export default function Favorite({ id, image, name, url }: Props) {
 	const [showModal, setShowModal] = useState(false)
 	const Router = useRouter()
+	
 	const { deleteFavRecipe } = useFavorite()
 
 	async function handleDeleteFavorite() {
