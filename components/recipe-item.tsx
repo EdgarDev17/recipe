@@ -12,7 +12,7 @@ function Recipe({ id, image, title, sourceName }: Props) {
 	return (
 		<>
 			<Link key={id} href={`/recipes/${id}`}>
-				<a className='h-52 flex items-center justify-around bg-gray-50 shadow rounded-lg'>
+				<a className='sm:px-5 h-52 flex items-center justify-around bg-gray-50 shadow rounded-lg'>
 					<Image
 						alt={'recipe preview'}
 						width={'125px'}
